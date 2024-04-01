@@ -11,8 +11,21 @@ import FadeInDownOnScroll from "@/components/ReuseComponent/FadeInDownOnScroll";
 function App() {
     const [activeItem, setActiveItem] = useState(0);
     const controls = useAnimation();
-    const [isLg, setIsLg] = useState(window.innerWidth >= 1024);
+    const [isLg, setIsLg] = useState(false);
 
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsLg(window.innerWidth >= 1024);
+        };
+
+        handleResize(); // Kiểm tra kích thước ban đầu
+        window.addEventListener('resize', handleResize); // Thêm sự kiện lắng nghe khi kích thước cửa sổ thay đổi
+
+        return () => {
+            window.removeEventListener('resize', handleResize); // Loại bỏ sự kiện lắng nghe khi component unmounted
+        };
+    }, []);
     useEffect(() => {
 
         window.addEventListener('scroll', handleScroll);
