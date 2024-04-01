@@ -1,0 +1,48 @@
+
+.extend-on-hover {
+    transition: height 1s ease-in-out;
+}
+.extend-on-hover:hover {
+    height: 100%;
+    transition: height 1s ease-in-out;
+}
+
+.transition-effect {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.my-5.group:hover .transition-effect {
+    opacity: 1;
+}
+.active {
+    color: black;
+}
+.ant-collapse-header{
+    background-color: white ;
+    color : #003da5;
+
+}
+
+.ant-collapse-item {
+    border-bottom: none !important;
+}
+.ant-collapse-expand-icon {
+    display: none !important;
+}
+.ant-collapse {
+    border: none !important;
+}
+.ant-collapse-header-text {
+    background-color: white ;
+    color : white;
+    -webkit-text-stroke-color: #003da5;
+    -webkit-text-stroke-width: 1px;
+    font-size: 64px;
+}
+
+.ant-collapse-item-active .ant-collapse-header {
+    color: #003da5 !important;
+    -webkit-text-stroke-color: white;
+    -webkit-text-stroke-width: 1px;
+}

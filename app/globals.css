@@ -1,7 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -10,9 +10,9 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-start-rgb: 255, 255, 255;
+    --background-start-rgb: 255, 255, 255;
+    --background-end-rgb: 255, 255, 255;
   }
 }
 
@@ -26,8 +26,74 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
+
+.button:hover,
+.button.hovered {
+  background-color: #4CAF50; /* Màu xanh */
+  color: white;
+  transform: scale(1.1);
+}
+.fade-in-down {
+  opacity: 0;
+  transform: translateY(-50px);
+}
+
+.ant-dropdown > ul {
+  padding: 20px !important;
+}
+.ant-dropdown-menu-title-content {
+  padding-top: 5px !important;
+  padding-bottom: 10px !important;
+}
+
+.fade-in-down.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.fade-in {
+  opacity: 0;
+}
+
+.fade-in.is-visible {
+  opacity: 1;
+}
+
+
+
+/*CustomSwiper Styles*/
+.custom-next:after, .custom-prev:after {
+  font-size: 14px !important;
+  color: blue;
+}
+.swiper-container {
+  position: relative;
+}
+
+
+.clipPath-Carousel {
+ clip-path: ellipse(198vw 119% at 50% 211%);
+}
+.clipPath-Footer {
+  clip-path: ellipse(220vw 100% at 50% 100%);
+}
+.clipPath-Header {
+  clip-path: circle(150vw at 50% -118vw);
+}
+.clipPath-Footer-Equality-Page {
+  clip-path: ellipse(118vw 100% at 50% 100%);
+}
+
+
+
+

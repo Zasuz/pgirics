@@ -1,0 +1,11 @@
+.before\:bg-equality-conic-background:hover::before {
+    animation: rotate 3s linear infinite;
+}
+@keyframes rotate {
+     0% {
+         background-position: 0%;
+     }
+     100% {
+         background-position: 100%;
+     }
+ }

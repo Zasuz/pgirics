@@ -1,0 +1,18 @@
+.custom-checkbox .ant-checkbox-inner {
+    border-radius: 99999px;
+    border-color: #003da5;
+    width: 21px;
+    height: 21px;
+}
+
+.custom-checkbox span {
+    font-size: 18px;
+    color: #003da5;
+}
+.swiper-slide {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    clip-path: circle(40% at 50% 50%);
+    padding: 15px;
+}

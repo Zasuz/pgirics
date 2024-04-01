@@ -1,0 +1,31 @@
+.header-drawer .ant-collapse-header{
+    flex-direction: row-reverse !important;
+    justify-content: flex-end !important;
+    padding-left: 0px !important;
+    background: white !important;
+    border-color: white !important;
+    align-items: center !important;
+    padding : 0px !important
+}
+.header-drawer .ant-collapse-content{
+    border: none !important;
+}
+.header-drawer .ant-collapse-item{
+   border: none !important;
+}
+.header-drawer .ant-collapse-header-text{
+    color: #003da5 !important;
+    margin-inline: unset !important;
+    display: flex;
+    flex:unset !important;
+
+}
+.header-drawer .ant-collapse{
+    border: none !important;
+}
+.header-drawer .ant-collapse-content-box {
+    border: none !important;
+}
+.header-drawer li {
+    list-style-type: none;
+}

@@ -1,0 +1,26 @@
+.swiper-slide {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    clip-path: circle(40% at 50% 50%);
+    padding: 15px;
+}
+
+
+
+.nav-scroll {
+    @apply inline-flex h-12 mr-2 px-1 px-[0.8rem] items-center justify-center relative cursor-pointer mt-1 mb-1 before:absolute hover:opacity-80 hover:bg-white rounded-full py-3 px-7
+    before:top-1/2 before:right-[8px] before:-translate-y-1/2 before:w-[1rem] before:h-[1rem] before:rounded-full before:border-2 before:border-solid before:border-white
+    after:absolute after:top-1/2 after:-translate-y-1/2 after:bg-primary after:w-[0.6rem] after:h-[0.6rem] after:rounded-full after:right-[11px]
+}
+
+.nav-scrollActive {
+    @apply inline-flex h-12 mr-2 px-1 px-[0.8rem] items-center justify-center relative cursor-pointer mt-1 mb-1 before:absolute   rounded-full py-3 px-7
+    before:top-1/2 before:right-[8px] before:-translate-y-1/2 before:w-[1rem] before:h-[1rem] before:rounded-full before:border-2 before:border-solid before:border-primary
+    after:absolute after:top-1/2 after:-translate-y-1/2 after:bg-primary after:w-[0.6rem] after:h-[0.6rem] after:rounded-full after:right-[11px]
+}
+
+.active {
+    background-color: #ffffff !important;
+    color: #1D4ED8 !important;
+}
