@@ -126,15 +126,15 @@ const Header = () => {
         {
             key: '3',
             label: (
-                <div className={"font-bold"}><DropDown isSubDropDown={true} title={"Bền vững"}
-                                                       href={BASE_URL + "/ben-vung"}
-                                                       items={itemsSubDropDownKey3}/></div>
+               <DropDown isSubDropDown={true} title={"Bền vững"}
+                                                       href={BASE_URL+"/ben-vung"}
+                                                       items={itemsSubDropDownKey3}/>
             ),
         },
         {
             key: '4',
             label: (
-                <DropDownItem title={"Đạo đức và trách nhiệm"} href={BASE_URL + "/lam-dep-co-trach-nhiem"}/>
+                <DropDownItem title={"Đạo đức và trách nhiệm"} href={BASE_URL + "/"}/>
             ),
         },
     ];
@@ -150,7 +150,7 @@ const Header = () => {
     return (
         <div className={"w-full h-auto fixed bg-white text-black  p-4 z-50"}>
 
-            <img src={iconSrc} className={`absolute right-1/2  top-${isViewportTop ? '7' : '0'} ${isViewportTop ? 'scale-[1.2]' : 'scale-1'} h-full py-2 transition-all duration-300`} />
+            <a href={BASE_URL}><img src={iconSrc} className={`absolute right-1/2  top-${isViewportTop ? '7' : '0'} ${isViewportTop ? 'scale-[1.2]' : 'scale-1'} h-full py-2 transition-all duration-300`} /></a>
 
             <div className={"flex justify-between px-4  items-center "}>
                 <ButtonHover className={"lg:flex hidden rounded-full flex items-center z-30 text-[13px]"}>
@@ -206,7 +206,7 @@ const Header = () => {
                             <DropDownItem title={"Đổi mới"} href={BASE_URL + "/doi-moi"}/>
                             <DropDownItem title={"An toàn sản phẩm"} href={BASE_URL + "/an-toan-san-pham"}/>
                             <DropDownItem title={"Thành phần"} href={BASE_URL + "/thanh-phan"}/>
-                            <DropDownItem title={"#BECRUELYFREE"} href={"#"}/>
+                            <DropDownItem title={"#BECRUELYFREE"} href={BASE_URL+"/cruelty-free"}/>
                         </div>
                     </Panel>
                 </Collapse>

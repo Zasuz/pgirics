@@ -13,6 +13,8 @@ const SliderBrand = ({items, isHaveWebsite}) => {
 
     return (
         <Swiper
+            pagination={true}
+            modules={[Pagination]}
             slidesPerView={1}
             spaceBetween={30}
             className="mySwiper w-full h-auto bg-white pt-40"

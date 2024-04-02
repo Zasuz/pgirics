@@ -1,5 +1,5 @@
 'use client';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {motion, useAnimation} from 'framer-motion';
 import InfiniteSequentialAnimation from "@/components/home-page/InfiniteSequentialAnimation";
 import {Button} from "antd";
@@ -12,6 +12,7 @@ function App() {
     const [activeItem, setActiveItem] = useState(0);
     const controls = useAnimation();
     const [isLg, setIsLg] = useState(false);
+    const refs = useRef([]);
 
 
     useEffect(() => {
@@ -96,15 +97,15 @@ function App() {
     },
 
     ]
+
     useEffect(() => {
         const handleScroll = () => {
             const sections = document.querySelectorAll("section"); // Thay "section" bằng phần tử mà bạn muốn kích hoạt
-            console.log(sections)
+
             sections.forEach((section, index) => {
                 const rect = section.getBoundingClientRect();
                 const isInViewport = rect.top >= 0 && rect.bottom <= window.innerHeight;
                 if (isInViewport) {
-                    const sectionId = parseInt(section.getAttribute("id"));
                     setActiveItem(index);
                 }
             });
@@ -114,10 +115,18 @@ function App() {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
-
+    const scrollToRef = (index) => {
+        console.log(index)
+        if (refs.current[index]) {
+            window.scrollTo({
+                top: refs.current[index].offsetTop,
+                behavior: 'smooth',
+            });
+        }
+    };
     const handleScroll = () => {
         try {
-            const element = document.getElementById('myElement');
+            const element = document.getElementById('sectionControl');
             const rect = element.getBoundingClientRect();
             const isInViewport = rect.top >= 0 && rect.bottom <= window.innerHeight;
             if (isInViewport) {
@@ -139,9 +148,9 @@ function App() {
         }
 
     };
-    return (<div>
-        <section id={"1"}
-            className="nav bg-blue-600 justify-center flex items-center h-screen w-screen overflow-hidden relative before:w-full before:h-full before:absolute before:top-0 before:left-0 before:bg-gradient-opacity -z-[99999]
+    return (<div className={"overflow-x-hidden"}>
+        <section id={"1"} ref={(el) => (refs.current[0] = el)}
+                 className="nav bg-blue-600 justify-center flex items-center h-screen w-screen overflow-hidden relative before:w-full before:h-full before:absolute before:top-0 before:left-0 before:bg-gradient-opacity -z-[99999]
                after:bottom-0 after:-translate-x-1/2 after:left-1/2 after:w-32 after:h-32 after:rounded-full after:bg-yellow-400 after:absolute lg:after:content-[none]">
             <InfiniteSequentialAnimation/>
             <div className={"clipPath-Carousel absolute w-full h-full bg-white z-40"}>
@@ -171,15 +180,21 @@ function App() {
                     const itemClass = index === activeItem ? 'group active nav-scrollActive' : 'group nav-scroll';
                     const isActiveClass = index === activeItem ? 'inline mr-6' : 'group-hover:inline hidden mr-6';
 
-                    return (<li key={index} className={itemClass} onClick={() => setActiveItem(index)}>
+                    return (<li key={index} className={itemClass} onClick={() => {
+                        console.log( "indexAtive :" + index)
+                        setActiveItem(index)
+                        scrollToRef(index)
+                    }}>
                         <a className={isActiveClass}>{item.title}</a>
                     </li>)
                 })}
             </ul>
         </motion.div>
-        <FadeInDownOnScroll>
-            <section id={"2"}
-                className={"nav w-full h-auto bg-white text-primary pt-40 flex flex-col justify-center items-center "}>
+
+        <div  ref={(el) => (refs.current[1] = el)}>
+        <FadeInDownOnScroll >
+            <section
+                     className={"nav w-full h-auto bg-white text-primary pt-40 flex flex-col justify-center items-center "}>
                 <h3 className={"text-center text-[1rem] font-[800] "}>CÁC NHÃN HÀNG CỦA CHÚNG TÔI</h3>
                 <h1 className={"hidden lg:block pt-3 text-center text-[2.5rem] font-[700] after:w-[0.6rem] after:h-[0.6rem] after:bg-[#fedb00] after:rounded-full after:inline-block "}>Các
                     sản phẩm của chúng tôi giúp cuộc sống dễ hơn</h1>
@@ -189,10 +204,11 @@ function App() {
                     các biểu tượng mang tính thương hiệu của chúng tôi</Button>
             </section>
         </FadeInDownOnScroll>
-        {isLg ? <motion.section id={"3"}
-            className="nav mt-32 transition duration-[3000ms] ease-in-out grid grid-cols-2 gap-4 px-10 overflow-hidden  min-w-[120vw] "
-            animate={controls}
-           >
+        </div>
+        {isLg ? <motion.section id={"sectionControl"} ref={(el) => (refs.current[2] = el)}
+                                className="nav mt-32 transition duration-[3000ms] ease-in-out grid grid-cols-2 gap-4 px-10 overflow-hidden  min-w-[120vw] "
+                                animate={controls}
+        >
             <img
                 src={"https://images.ctfassets.net/ywowj8d94i8y/5XvB2uo4vZKRNevfn0nReB/fdf6d88fabc8d94d04bdbd11fcb47921/1.10.23_Sustainability_Page_Key_Image_-_Mom_and_baby__2HP.jpg?fm=webp"}
                 className="bg-blue-500 w-full h-full rounded-full"/>
@@ -209,7 +225,7 @@ function App() {
                     src={"https://images.ctfassets.net/ywowj8d94i8y/46PTOQKbqYBYRXfTZeH1bW/615ed963e5d1daaed2edc0402e6b921c/HP-Sustainability_Section_2.png?fm=webp"}
                     className={"h-[30vw] right-0 absolute top-0"}/>
             </div>
-        </motion.section> : <section id={"3"} className={"nav relative mt-10"}>
+        </motion.section> :<section id={"3"} ref={(el) => (refs.current[2] = el)} className={"nav relative mt-10"}>
             <img
                 src={"https://images.ctfassets.net/ywowj8d94i8y/5XvB2uo4vZKRNevfn0nReB/fdf6d88fabc8d94d04bdbd11fcb47921/1.10.23_Sustainability_Page_Key_Image_-_Mom_and_baby__2HP.jpg?fm=webp"}/>
             <div
@@ -223,8 +239,9 @@ function App() {
             </div>
         </section>
         }
+        <div ref={(el) => (refs.current[3] = el)}>
         <FadeInDownOnScroll>
-            <section id={"4"} className={"nav flex lg:flex-row flex-col overflow-hidden mb-10 mt-32"}>
+            <section id={"4"}  className={"nav flex lg:flex-row flex-col overflow-hidden mb-10 mt-32"}>
                 {itemSection3.map((item, index) => {
                     return (<div key={index} className={"w-full flex  items-center justify-center mb-10 "}>
                         <div className={"w-8/12 group overflow-hidden rounded-3xl relative "}>
@@ -253,6 +270,7 @@ function App() {
                 })}
             </section>
         </FadeInDownOnScroll>
+        </div>
 
     </div>);
 }

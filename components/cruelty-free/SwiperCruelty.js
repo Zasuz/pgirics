@@ -21,7 +21,7 @@ const SwiperCruelty = ({items}) => {
                 }
             }}
             spaceBetween={40}
-            className=" w-6/12 flex h-auto pt-40  items-center justify-center"
+            className=" w-6/12  lg:w-0 lg:h-0 flex h-auto pt-40  items-center justify-center"
         >
             {
                 items.map((item, index) => {

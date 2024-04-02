@@ -131,7 +131,7 @@ const BrandPage = () => {
                         <Button className={"w-4/12 rounded-2xl border-primary text-primary bg-white"}>Xóa</Button>
                     </div>
                 </div>
-               <div className={"flex flex-col justify-center items-center w-full"}>
+               <div className={"lg:hidden flex flex-col justify-center items-center w-full"}>
                    <h3 className={"text-primary font-bold mb-5"}> Bộ lọc </h3>
                    <Search
                        placeholder="input search text"
@@ -143,16 +143,11 @@ const BrandPage = () => {
                    <Checkbox.Group className={"self-center custom-checkbox bg-[#f2f7ff] gap-2 p-10  my-5 w-1/2 flex rounded-2xl flex-col text-[16px] text-primary"}
                                    options={plainOptions}/>
                </div>
-
-
-
-
-
                 <div className={"flex flex-col w-full"}>
                     {
                         items.map((item, index) => {
                             return (
-                                <div className={"w-full ml-0 lg:ml-28 mt-20"}>
+                                <div key={index} className={"w-full ml-0 lg:ml-28 mt-20"}>
                                     <h1 className={"font-bold text-4xl text-primary"}>{item.title}</h1>
                                     <div
                                         className={"w-full h-auto bg-white text-primary flex flex-col justify-center items-center"}>
